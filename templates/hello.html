@@ -1,12 +1,23 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta charset="UTF-8">
-    <title>SmartNinja basic Jinja template</title>
+{% extends "base.html" %}
 
-    <link rel="stylesheet" href="/assets/css/style.css">
-</head>
-<body>
-    <h1>Hello, SmartNinja!</h1>
-</body>
-</html>
+{% block vsebina %}
+    <h2>Filton Guest Book</h2>
+    <h3>Dear guest, please fill in the following information.</h3>
+    <h4>Fields marked with * are mandatory!</h4>
+    <form method="POST" action="/result">
+        <label for="input-first_name">First name: </label><br>
+        <input type="text" id="input-first_name" name="first_name">
+        <br><br>
+        <label for="input-last_name">Last name: </label><br>
+        <input type="text" id="input-last_name" name="last_name">
+        <br><br>
+        <label for="input-email">Email: </label><br>
+        <input type="text" id="input-email" name="email">
+        <br><br>
+        <label for="input-message">Message*: </label><br>
+        <textarea rows="6" cols="50" type="text" id="input-message" name="message"></textarea>
+        <br><br>
+        <button type="submit">Submit</button>
+
+    </form>
+{% endblock vsebina %}

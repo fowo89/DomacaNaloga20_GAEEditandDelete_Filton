@@ -3,6 +3,7 @@ import os
 import jinja2
 import webapp2
 
+from models import Message
 
 template_dir = os.path.join(os.path.dirname(__file__), "templates")
 jinja_env = jinja2.Environment(loader=jinja2.FileSystemLoader(template_dir), autoescape=False)
@@ -31,6 +32,26 @@ class MainHandler(BaseHandler):
     def get(self):
         return self.render_template("hello.html")
 
+class ResultHandler(BaseHandler):
+    def post(self):
+        first_name = self.request.get("first_name")
+        last_name = self.request.get("last_name")
+        email = self.request.get("email")
+        message = self.request.get("message")
+
+        result = Message(first_name=first_name, last_name=last_name, email=email, message=message)
+        result.put()
+        """return self.write(result)"""
+        self.redirect_to("list")
+
+class ListHandler(BaseHandler):
+    def get(self):
+        list_ = Message.query().fetch()
+        params = {"list_": list_}
+        return self.render_template("list.html", params=params)
+
 app = webapp2.WSGIApplication([
     webapp2.Route('/', MainHandler),
+    webapp2.Route('/result', ResultHandler),
+    webapp2.Route('/list', ListHandler, name="list"),
 ], debug=True)
