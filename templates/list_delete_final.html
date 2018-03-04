@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block vsebina %}
+<h2>Filton Guest Book</h2>
+
+<h3>Do you really want to delete this message? If you select "YES", message recovery will not be possible!</h3>
+    <a href="/deleted_list" ><button>NO</button></a>
+
+    <br><br>
+    <form method="POST">
+        <button type="submit">YES</button>
+    </form>
+
+{% endblock vsebina %}

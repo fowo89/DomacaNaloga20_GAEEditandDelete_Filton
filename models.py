@@ -7,3 +7,4 @@ class Message(ndb.Model):
     email = ndb.StringProperty()
     message = ndb.TextProperty()
     time_date = ndb.DateTimeProperty(auto_now_add=True)
+    deleted = ndb.BooleanProperty(default=False)

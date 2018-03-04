@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block vsebina %}
+<h2>Filton Guest Book</h2>
+
+<h3>Do you really want to recover this message?</h3>
+
+    <strong><a href="mailto:{{result.email}}">{{ result.first_name }} {{ result.last_name }}</a></strong> on {{ result.time_date.strftime('%B %d %Y at %H:%M') }}:
+        <br>
+        <em>{{ result.message }}</em>
+        <br>
+    <br>
+    <a href="/deleted_list" ><button>NO</button></a>
+
+    <br><br>
+    <form method="POST">
+        <button type="submit">YES</button>
+    </form>
+
+{% endblock vsebina %}

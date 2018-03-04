@@ -2,15 +2,16 @@
 
 {% block vsebina %}
     <h2>Filton Guest Book</h2>
-    <h3>Messages</h3>
+    <h3>Deleted Messages</h3>
 {% for result in list_ %}
     <p>
     <strong><a href="mailto:{{result.email}}">{{ result.first_name }} {{ result.last_name }}</a></strong> on {{ result.time_date.strftime('%B %d %Y at %H:%M') }}:
         <br>
         <em>{{ result.message }}</em>
         <br>
-        <a href="/list/{{ result.key.id() }}/edit" ><button>Edit</button></a>
-        <a href="/list/{{ result.key.id() }}/delete" ><button>Delete</button></a>
+        <form></form>
+        <a href="/list/{{ result.key.id() }}/list_recover" ><button>Recover</button></a>
+        <a href="/list/{{ result.key.id() }}/list_delete_final" ><button>Delete</button></a>
     </p>
     <br>
 {% else %}
