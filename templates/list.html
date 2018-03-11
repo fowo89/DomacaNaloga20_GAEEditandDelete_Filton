@@ -5,7 +5,7 @@
     <h3>Messages</h3>
 {% for result in list_ %}
     <p>
-    <strong><a href="mailto:{{result.email}}">{{ result.first_name }} {{ result.last_name }}</a></strong> on {{ result.time_date.strftime('%B %d %Y at %H:%M') }}:
+    <strong><a href="mailto:{{result.email}}"> {{ result.email }} {{ result.first_name }} {{ result.last_name }}</a></strong> on {{ result.time_date.strftime('%B %d %Y at %H:%M') }}:
         <br>
         <em>{{ result.message }}</em>
         <br>

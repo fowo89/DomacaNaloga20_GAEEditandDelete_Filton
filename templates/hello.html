@@ -1,6 +1,9 @@
 {% extends "base.html" %}
 
 {% block vsebina %}
+
+    {% if logiran %}
+
     <h2>Filton Guest Book</h2>
     <h3>Dear guest, please fill in the following information.</h3>
     <h4>Fields marked with * are mandatory!</h4>
@@ -11,13 +14,23 @@
         <label for="input-last_name">Last name: </label><br>
         <input type="text" id="input-last_name" name="last_name">
         <br><br>
-        <label for="input-email">Email: </label><br>
+        <!---<label for="input-email">Email: </label><br>
         <input type="text" id="input-email" name="email">
-        <br><br>
+        <br><br>--->
         <label for="input-message">Message*: </label><br>
         <textarea rows="6" cols="50" type="text" id="input-message" name="message"></textarea>
         <br><br>
-        <button type="submit">Submit</button>
+        <button type="submit">Submit</button>  <a href="/list}"><button>List of messages</button></a>
 
     </form>
+
+    <br><br>
+
+    <a href="{{ logout_url }}"><button>Logout</button></a>
+
+    {% else %}
+        <p>You are not logged in.</p>
+        <a href="{{ login_url }}"><button>Login</button></a>
+
+    {% endif %}
 {% endblock vsebina %}
